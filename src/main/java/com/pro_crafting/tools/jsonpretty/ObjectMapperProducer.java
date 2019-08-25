@@ -13,7 +13,6 @@ public class ObjectMapperProducer {
     @Singleton
     @Produces
     public ObjectMapper produceObjectMapper() {
-        ObjectMapper objectMapper = new ObjectMapper();
-        return objectMapper;
+        return new ObjectMapper();
     }
 }
