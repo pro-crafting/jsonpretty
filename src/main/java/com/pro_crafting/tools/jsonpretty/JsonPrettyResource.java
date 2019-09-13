@@ -49,7 +49,6 @@ public class JsonPrettyResource {
             return output -> output.write(asBytes("Invalid JSON, Reason: " + e.getMessage()));
         }
 
-
         return output -> {
             output.write(asBytes("<pre>"));
 
@@ -62,6 +61,8 @@ public class JsonPrettyResource {
             } catch (Exception e) {
                 output.write(asBytes("Invalid JSON, Reason: " + e.getMessage()));
             }
+
+            parser.close();
 
             output.write(asBytes("</pre>"));
         };
