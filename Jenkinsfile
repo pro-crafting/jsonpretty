@@ -37,13 +37,13 @@ pipeline {
             }
             steps {
                 withCredentials([
-                    usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'DOCKER_IO_USERNAME', passwordVariable: 'DOCKER_IO_TOKEN'),
+                    usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'QUARKUS_CONTAINER-IMAGE_USERNAME', passwordVariable: 'QUARKUS_CONTAINER-IMAGE_PASSWORD'),
                     usernamePassword(credentialsId: 'ossrh', usernameVariable: 'OSSRH_USERNAME', passwordVariable: 'OSSRH_TOKEN'),
                     usernamePassword(credentialsId: 'gpg', usernameVariable: 'GPG_KEY_NAME', passwordVariable: 'GPG_PASSPHRASE'),
                     file(credentialsId: 'mavensigningkey', variable: 'MAVEN_SIGNING_KEY')
                 ]) {
                     sh "gpg --batch --fast-import ${env.MAVEN_SIGNING_KEY}"
-                    sh 'mvn -DskipTests deploy -s cd/settings.xml -P sign,docker,build-extras'
+                    sh 'mvn -DskipTests -Dquarkus.container-image.push=true deploy -s cd/settings.xml -P sign,build-extras'
                 }
             }
         }
