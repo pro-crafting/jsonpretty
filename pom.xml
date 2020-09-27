@@ -169,20 +169,6 @@
                             <images>
                                 <image>
                                     <name>${docker.name}</name>
-                                    <run>
-                                        <containerNamePattern>%a-%t-%i</containerNamePattern>
-                                        <ports>
-                                            <port>${docker.published.port}:8080</port>
-                                        </ports>
-                                        <wait>
-                                            <http>
-                                                <url>http://${it.baseuri}:${docker.published.port}/health</url>
-                                                <method>GET</method>
-                                                <status>200</status>
-                                            </http>
-                                            <time>5000</time>
-                                        </wait>
-                                    </run>
                                     <build>
                                         <dockerFile>${project.basedir}/src/main/docker/Dockerfile</dockerFile>
                                         <contextDir>${project.basedir}</contextDir>
