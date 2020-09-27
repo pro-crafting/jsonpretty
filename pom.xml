@@ -166,6 +166,7 @@
                         <groupId>io.fabric8</groupId>
                         <artifactId>docker-maven-plugin</artifactId>
                         <configuration>
+                            <verbose>build</verbose>
                             <images>
                                 <image>
                                     <name>${docker.name}</name>
