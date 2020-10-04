@@ -10,7 +10,7 @@
 
     <groupId>com.pro-crafting.tools</groupId>
     <artifactId>jsonpretty-web</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.1.0-SNAPSHOT</version>
 
     <scm>
         <connection>scm:git:git@github.com:pro-crafting/jsonpretty.git</connection>
@@ -95,7 +95,7 @@
         <!-- Quarkus Extensions -->
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-resteasy-jackson</artifactId>
+            <artifactId>quarkus-jackson</artifactId>
         </dependency>
 
         <dependency>
@@ -106,6 +106,11 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-smallrye-metrics</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-vertx-web</artifactId>
         </dependency>
 
         <!-- Test dependencies -->
