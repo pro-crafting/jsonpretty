@@ -1,6 +1,7 @@
 package com.pro_crafting.tools.jsonpretty;
 
 import com.fasterxml.jackson.core.JsonEncoding;
+import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -23,8 +24,7 @@ import java.nio.charset.StandardCharsets;
 public class JsonPrettyResource {
     private static final String FORM_JSON_PREFIX_REPLACEMENT = "     ";
 
-    @Inject
-    ObjectMapper mapper;
+    private static final JsonFactory factory = new JsonFactory();
 
     public void init(@Observes Router router) {
         router.post("/jsonpretty").handler(new JsonPrettyHandler());
@@ -38,7 +38,7 @@ public class JsonPrettyResource {
             HttpServerResponseOutputStream output = new HttpServerResponseOutputStream(rc.response());
             JsonGenerator generator;
             try {
-                generator = mapper.getFactory().createGenerator(output, JsonEncoding.UTF8);
+                generator = factory.createGenerator(output, JsonEncoding.UTF8);
                 generator.setPrettyPrinter(new DefaultPrettyPrinter());
             } catch (IOException e) {
                 rc.response().setStatusCode(400).end("Invalid JSON, Reason: " + e.getMessage());
