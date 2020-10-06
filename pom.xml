@@ -96,6 +96,10 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
 
         <!-- Quarkus Extensions -->
         <dependency>
@@ -110,7 +114,7 @@
 
         <dependency>
             <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-vertx-web</artifactId>
+            <artifactId>quarkus-vertx-http</artifactId>
         </dependency>
 
         <!-- Test dependencies -->
