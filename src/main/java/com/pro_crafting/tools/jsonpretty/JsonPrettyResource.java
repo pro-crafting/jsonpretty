@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpServerResponse;
@@ -15,7 +14,6 @@ import io.vertx.ext.web.RoutingContext;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;
-import javax.inject.Inject;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
@@ -34,7 +32,7 @@ public class JsonPrettyResource {
 
         @Override
         public void handle(RoutingContext rc) {
-            rc.response().setChunked(true);
+            rc.response().setChunked(true).putHeader("Content-Type", "text/html;charset=UTF-8");
             HttpServerResponseOutputStream output = new HttpServerResponseOutputStream(rc.response());
             JsonGenerator generator;
             try {
@@ -156,12 +154,12 @@ public class JsonPrettyResource {
         }
 
         @Override
-        public void write(byte[] b)  {
+        public void write(byte[] b) {
             response.write(Buffer.buffer(b));
         }
 
         @Override
-        public void write(byte[] b, int off, int len)  {
+        public void write(byte[] b, int off, int len) {
             response.write(Buffer.buffer(b));
         }
     }
