@@ -1,0 +1,10 @@
+{
+  "resources": [
+    {
+      "pattern": ".*\\.html$"
+    },
+    {
+      "pattern": ".*\\.css$"
+    }
+  ]
+}
