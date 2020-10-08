@@ -26,6 +26,12 @@ public class JsonPrettyService {
             return;
         }
         JsonParser parser = JsonParser.newParser();
+        parser.exceptionHandler(e -> {
+            rc.response().end("Invalid JSON, Reason: " + e.getMessage());
+        });
+        rc.request().exceptionHandler(e -> {
+            rc.response().end("Invalid JSON, Reason: " + e.getMessage());
+        });
         rc.request().handler(new Handler<>() {
             boolean removedPrefix = false;
 
