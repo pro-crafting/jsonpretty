@@ -34,19 +34,11 @@
         <file.runner>${project.build.finalName}-runner.jar</file.runner>
 
         <!-- Dependency Versions -->
-        <version.quarkus>1.8.2.Final</version.quarkus>
+        <version.quarkus>1.10.2.Final</version.quarkus>
 
         <!-- Plugin Versions -->
-        <version.docker-maven-plugin>0.34.0</version.docker-maven-plugin>
-        <version.maven-surefire-plugin>2.21.0</version.maven-surefire-plugin>
-        <version.maven-failsafe-plugin>2.21.0</version.maven-failsafe-plugin>
+        <version.docker-maven-plugin>0.34.1</version.docker-maven-plugin>
         <version.sonar-maven-plugin>3.4.1.1168</version.sonar-maven-plugin>
-
-        <!-- Test Dependency Versions -->
-        <junit.jupiter.version>5.2.0</junit.jupiter.version>
-        <junit.platform.version>1.2.0</junit.platform.version>
-        <version.mockito-core>2.18.3</version.mockito-core>
-        <version.rest-assured>3.1.0</version.rest-assured>
     </properties>
 
     <build>
@@ -115,35 +107,6 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-vertx-http</artifactId>
-        </dependency>
-
-        <!-- Test dependencies -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${version.mockito-core}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-junit-jupiter</artifactId>
-            <version>${version.mockito-core}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>${version.rest-assured}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
