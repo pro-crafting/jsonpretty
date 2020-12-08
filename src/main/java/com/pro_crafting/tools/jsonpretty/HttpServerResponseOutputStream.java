@@ -7,7 +7,7 @@ import java.io.OutputStream;
 
 public class HttpServerResponseOutputStream extends OutputStream {
 
-    private HttpServerResponse response;
+    private final HttpServerResponse response;
 
     public HttpServerResponseOutputStream(HttpServerResponse response) {
         this.response = response;

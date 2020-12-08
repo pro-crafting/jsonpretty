@@ -20,7 +20,7 @@ public class JsonPrettyService {
         JsonGenerator generator;
         try {
             generator = factory.createGenerator(output, JsonEncoding.UTF8);
-            generator.setPrettyPrinter(new DefaultPrettyPrinter());
+            generator.useDefaultPrettyPrinter();
         } catch (IOException e) {
             rc.response().end("Invalid JSON, Reason: " + e.getMessage());
             return;
@@ -103,7 +103,7 @@ public class JsonPrettyService {
                             }
                             break;
                     }
-                } catch (Exception e) {
+                } catch (IOException e) {
                     rc.response().write(Buffer.buffer("Invalid JSON, Reason: " + e.getMessage()));
                 }
             }
