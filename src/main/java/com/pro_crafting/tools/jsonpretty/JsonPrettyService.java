@@ -93,8 +93,14 @@ public class JsonPrettyService {
                                 generator.writeBoolean(event.booleanValue());
                             } else if (event.isNull()) {
                                 generator.writeNull();
-                            } else if (event.isNumber()) {
+                            } else if (event.value() instanceof Double) {
                                 generator.writeNumber(event.doubleValue());
+                            } else if (event.value() instanceof Float) {
+                                generator.writeNumber(event.floatValue());
+                            } else if (event.value() instanceof Integer) {
+                                generator.writeNumber(event.integerValue());
+                            } else if (event.value() instanceof Long) {
+                                generator.writeNumber(event.longValue());
                             } else {
                                 wroteAnything = false;
                             }
