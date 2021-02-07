@@ -34,7 +34,7 @@
         <file.runner>${project.build.finalName}-runner.jar</file.runner>
 
         <!-- Dependency Versions -->
-        <version.quarkus>1.11.0.Final</version.quarkus>
+        <version.quarkus>1.11.1.Final</version.quarkus>
 
         <!-- Plugin Versions -->
         <version.docker-maven-plugin>0.34.1</version.docker-maven-plugin>
