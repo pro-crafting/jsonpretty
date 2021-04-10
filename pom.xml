@@ -5,7 +5,7 @@
     <parent>
         <groupId>com.pro-crafting</groupId>
         <artifactId>pc-parent</artifactId>
-        <version>9</version>
+        <version>10</version>
     </parent>
 
     <groupId>com.pro-crafting.tools</groupId>
@@ -34,10 +34,9 @@
         <file.runner>${project.build.finalName}-runner.jar</file.runner>
 
         <!-- Dependency Versions -->
-        <version.quarkus>1.11.1.Final</version.quarkus>
+        <version.quarkus>1.13.1.Final</version.quarkus>
 
         <!-- Plugin Versions -->
-        <version.docker-maven-plugin>0.34.1</version.docker-maven-plugin>
         <version.sonar-maven-plugin>3.4.1.1168</version.sonar-maven-plugin>
     </properties>
 
@@ -57,15 +56,6 @@
             </plugin>
         </plugins>
 
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>io.fabric8</groupId>
-                    <artifactId>docker-maven-plugin</artifactId>
-                    <version>${version.docker-maven-plugin}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
     </build>
 
     <dependencyManagement>
