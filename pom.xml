@@ -34,7 +34,7 @@
         <file.runner>${project.build.finalName}-runner.jar</file.runner>
 
         <!-- Dependency Versions -->
-        <version.quarkus>1.13.1.Final</version.quarkus>
+        <version.quarkus>2.0.0.Alpha1</version.quarkus>
 
         <!-- Plugin Versions -->
         <version.sonar-maven-plugin>3.4.1.1168</version.sonar-maven-plugin>
