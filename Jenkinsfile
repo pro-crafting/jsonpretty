@@ -4,7 +4,7 @@ pipeline {
     agent any
     tools {
         maven 'maven-default'
-        jdk 'openjdk11-zulu'
+        jdk 'openjdk15-zulu'
     }
     stages {
         stage ('Checking commit message') {

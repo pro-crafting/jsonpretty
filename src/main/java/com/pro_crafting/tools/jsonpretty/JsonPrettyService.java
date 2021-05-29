@@ -3,7 +3,6 @@ package com.pro_crafting.tools.jsonpretty;
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.parsetools.JsonEvent;
@@ -43,9 +42,8 @@ public class JsonPrettyService {
                     // We have to filter out anything before the =,
                     // so that jackson can read just the json string
 
-                    // Read the first 5 bytes
-                    // containing json=
-                    //buffer.getString().getBytes(0, 5, new byte[5]);
+                    // Read the first 5 bytes containing json=
+                    // buffer.getString().getBytes(0, 5, new byte[5]);
                     buffer.setString(0, jsonPrefix);
                     removedPrefix = true;
                 }
