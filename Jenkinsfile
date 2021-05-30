@@ -2,7 +2,10 @@
 
 pipeline {
     agent {
-        docker { image 'quay.io/quarkus/ubi-quarkus-native-image:21.0.0.2-java11' }
+        docker {
+            image 'quarkus/ubi-quarkus-native-image:21.0.0.2-java11'
+            registryUrl 'quay.io'
+        }
     }
     stages {
         stage ('Checking commit message') {
