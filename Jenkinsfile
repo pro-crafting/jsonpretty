@@ -4,7 +4,7 @@ pipeline {
     agent {
         docker {
             image 'quarkus/ubi-quarkus-native-image:21.0.0.2-java11'
-            registryUrl 'quay.io'
+            registryUrl 'https://quay.io'
         }
     }
     stages {
