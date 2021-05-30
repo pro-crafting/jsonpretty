@@ -1,8 +1,7 @@
 #!/usr/bin/env groovy
 
 pipeline {
-    agent any
-    tools {
+    agent {
         docker { image 'quay.io/quarkus/ubi-quarkus-native-image:21.0.0.2-java11' }
     }
     stages {
