@@ -3,7 +3,7 @@
 pipeline {
     agent {
         docker {
-            image 'quarkus/ubi-quarkus-native-image:21.0.0.2-java11'
+            image 'quarkus/centos-quarkus-maven:21.0.0.2-java11'
             registryUrl 'https://quay.io'
             registryCredentialsId 'quay-postremus-bot'
         }
