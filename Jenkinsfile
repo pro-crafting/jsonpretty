@@ -1,12 +1,10 @@
 #!/usr/bin/env groovy
 
 pipeline {
-    agent {
-        docker {
-            image 'quarkus/centos-quarkus-maven:21.0.0.2-java11'
-            registryUrl 'https://quay.io'
-            registryCredentialsId 'quay-postremus-bot'
-        }
+    agent any
+    tools {
+        maven 'maven-default'
+        jdk 'mandrel-21.1.0.0-Final'
     }
     stages {
         stage ('Checking commit message') {
@@ -57,6 +55,11 @@ pipeline {
                     sh "mvn org.jacoco:jacoco-maven-plugin:prepare-agent org.apache.maven.plugins:maven-surefire-plugin:test org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.login=${env.SONARCLOUD_TOKEN}"
                 }
             }
+        }
+    }
+    post {
+        always {
+            cleanWs()
         }
     }
 }
