@@ -26,7 +26,7 @@ pipeline {
         }
         stage ('Build') {
             steps {
-                sh 'mvn install -P build-extras,jenkins-ci,docker'
+                sh 'mvn install -P build-extras,native'
             }
         }
         stage ('Deploy') {
@@ -43,7 +43,7 @@ pipeline {
                     file(credentialsId: 'mavensigningkey', variable: 'MAVEN_SIGNING_KEY')
                 ]) {
                     sh "gpg --batch --fast-import ${env.MAVEN_SIGNING_KEY}"
-                    sh 'mvn -DskipTests -Dquarkus.container-image.push=true deploy -s cd/settings.xml -P sign,build-extras,docker'
+                    sh 'mvn -DskipTests -Dquarkus.container-image.push=true -Dquarkus.container-image.username=${DOCKER_IO_USERNAME} -Dquarkus.container-image.password=${DOCKER_IO_TOKEN} deploy -s cd/settings.xml -P sign,build-extras,native'
                 }
             }
         }
