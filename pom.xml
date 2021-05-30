@@ -21,8 +21,8 @@
 
     <properties>
         <!-- Settings -->
-        <maven.compiler.source>15</maven.compiler.source>
-        <maven.compiler.target>15</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Port is set during execution of build-helper-maven-plugin:reserve-network-port goal -->
         <it.baseuri>127.0.0.1</it.baseuri>
@@ -97,6 +97,11 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-vertx-http</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-container-image-jib</artifactId>
         </dependency>
 
         <!-- Test Dependencies -->
