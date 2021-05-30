@@ -3,8 +3,7 @@
 pipeline {
     agent any
     tools {
-        maven 'maven-default'
-        jdk 'openjdk11-zulu'
+        docker { image 'quay.io/quarkus/ubi-quarkus-native-image:21.0.0.2-java11' }
     }
     stages {
         stage ('Checking commit message') {
