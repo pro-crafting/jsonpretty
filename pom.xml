@@ -60,9 +60,9 @@
                     <configuration>
                         <gpgArguments>
                             <arg>--pinentry-mode</arg>
-                            <arg>--yes</arg>
-                            <arg>--always-trust</arg>
                             <arg>loopback</arg>
+                            <arg>--always-trust</arg>
+                            <arg>--yes</arg>
                         </gpgArguments>
                     </configuration>
                     <executions>
