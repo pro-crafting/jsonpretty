@@ -34,8 +34,7 @@ pipeline {
         }
         stage ('Deploy') {
             when {
-                not {
-                    changeRequest()
+                not {changeRequest()
                 }
             }
             steps {
@@ -45,7 +44,7 @@ pipeline {
                     usernamePassword(credentialsId: 'gpg', usernameVariable: 'GPG_KEY_NAME', passwordVariable: 'GPG_PASSPHRASE'),
                     file(credentialsId: 'mavensigningkey', variable: 'MAVEN_SIGNING_KEY')
                 ]) {
-                    sh('gpg --batch --fast-import ${env.MAVEN_SIGNING_KEY}')
+                    sh("gpg --batch --fast-import ${env.MAVEN_SIGNING_KEY}")
                     sh 'mvn -Dquarkus.container-image.push=true -Dquarkus.container-image.username=${DOCKER_IO_USERNAME} -Dquarkus.container-image.password=${DOCKER_IO_TOKEN} deploy -s cd/settings.xml -P sign,native'
                 }
             }
