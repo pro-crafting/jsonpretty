@@ -25,16 +25,11 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Port is set during execution of build-helper-maven-plugin:reserve-network-port goal -->
-        <it.baseuri>127.0.0.1</it.baseuri>
         <sonar.organization>pro-crafting</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
-        <docker.name>postremus/${project.artifactId}</docker.name>
-
-        <file.runner>${project.build.finalName}-runner.jar</file.runner>
-
         <!-- Dependency Versions -->
-        <version.quarkus>1.13.1.Final</version.quarkus>
+        <version.quarkus>2.4.0.CR1</version.quarkus>
 
         <!-- Plugin Versions -->
         <version.sonar-maven-plugin>3.4.1.1168</version.sonar-maven-plugin>
@@ -55,7 +50,6 @@
                 </executions>
             </plugin>
         </plugins>
-
     </build>
 
     <dependencyManagement>
@@ -98,17 +92,26 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-vertx-http</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-container-image-jib</artifactId>
+        </dependency>
+
+        <!-- Test Dependencies -->
+        <dependency>
+            <groupId>io.quarkus</groupId>
+            <artifactId>quarkus-junit5</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <profiles>
-        <profile>
-            <id>jenkins-ci</id>
-            <properties>
-                <!-- Environment variable pointing to the real fqdn of the host. Defined inside of jenkins -->
-                <!--suppress UnresolvedMavenProperty -->
-                <it.baseuri>${env.PC_FQDN}</it.baseuri>
-            </properties>
-        </profile>
         <profile>
             <id>native</id>
             <activation>
@@ -119,49 +122,6 @@
             <properties>
                 <quarkus.package.type>native</quarkus.package.type>
             </properties>
-        </profile>
-        <profile>
-            <id>docker</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>io.fabric8</groupId>
-                        <artifactId>docker-maven-plugin</artifactId>
-                        <configuration>
-                            <images>
-                                <image>
-                                    <name>${docker.name}</name>
-                                    <build>
-                                        <dockerFile>${project.basedir}/src/main/docker/Dockerfile</dockerFile>
-                                        <contextDir>${project.basedir}</contextDir>
-
-                                        <tags>
-                                            <tag>latest</tag>
-                                            <tag>${project.version}</tag>
-                                        </tags>
-                                    </build>
-                                </image>
-                            </images>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <id>build</id>
-                                <phase>package</phase>
-                                <goals>
-                                    <goal>build</goal>
-                                </goals>
-                            </execution>
-                            <execution>
-                                <id>deploy</id>
-                                <phase>deploy</phase>
-                                <goals>
-                                    <goal>push</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
         </profile>
     </profiles>
 </project>

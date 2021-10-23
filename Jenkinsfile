@@ -4,7 +4,7 @@ pipeline {
     agent any
     tools {
         maven 'maven-default'
-        jdk 'openjdk11-zulu'
+        jdk 'mandrel-21.2.0.2-Final'
     }
     stages {
         stage ('Checking commit message') {
@@ -25,14 +25,16 @@ pipeline {
             }
         }
         stage ('Build') {
+            when {
+                changeRequest()
+            }
             steps {
-                sh 'mvn install -P build-extras,jenkins-ci,docker'
+                sh 'mvn install -P native'
             }
         }
         stage ('Deploy') {
             when {
-                not {
-                    changeRequest()
+                not {changeRequest()
                 }
             }
             steps {
@@ -42,8 +44,8 @@ pipeline {
                     usernamePassword(credentialsId: 'gpg', usernameVariable: 'GPG_KEY_NAME', passwordVariable: 'GPG_PASSPHRASE'),
                     file(credentialsId: 'mavensigningkey', variable: 'MAVEN_SIGNING_KEY')
                 ]) {
-                    sh "gpg --batch --fast-import ${env.MAVEN_SIGNING_KEY}"
-                    sh 'mvn -DskipTests -Dquarkus.container-image.push=true deploy -s cd/settings.xml -P sign,build-extras,docker'
+                    sh("gpg --batch --fast-import ${env.MAVEN_SIGNING_KEY}")
+                    sh 'mvn -Dquarkus.container-image.push=true -Dquarkus.container-image.username=${DOCKER_IO_USERNAME} -Dquarkus.container-image.password=${DOCKER_IO_TOKEN} deploy -s cd/settings.xml -P sign,native'
                 }
             }
         }
