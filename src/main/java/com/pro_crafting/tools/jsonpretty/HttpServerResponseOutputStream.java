@@ -1,5 +1,6 @@
 package com.pro_crafting.tools.jsonpretty;
 
+import io.netty.buffer.ByteBuf;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.HttpServerResponse;
 
@@ -25,6 +26,8 @@ public class HttpServerResponseOutputStream extends OutputStream {
 
     @Override
     public void write(byte[] b, int off, int len) {
-        response.write(Buffer.buffer(b));
+        byte[] value = new byte[len];
+        System.arraycopy(b, off, value, 0, len);
+        response.write(Buffer.buffer(value));
     }
 }
