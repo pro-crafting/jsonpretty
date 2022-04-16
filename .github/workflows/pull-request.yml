@@ -14,8 +14,3 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
     - name: Maven build
       run: mvn -B install -Pnative
-    - name: Sonar
-      env:
-        SONARCLOUD_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
-      run: |
-        mvn org.jacoco:jacoco-maven-plugin:prepare-agent org.apache.maven.plugins:maven-surefire-plugin:test org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.login=$SONARCLOUD_TOKEN
