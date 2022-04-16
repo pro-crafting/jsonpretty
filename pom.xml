@@ -29,7 +29,7 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
         <!-- Dependency Versions -->
-        <version.quarkus>2.4.0.CR1</version.quarkus>
+        <version.quarkus>2.8.0.Final</version.quarkus>
 
         <!-- Plugin Versions -->
         <version.sonar-maven-plugin>3.4.1.1168</version.sonar-maven-plugin>
