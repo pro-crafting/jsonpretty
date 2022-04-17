@@ -3,6 +3,9 @@ package com.pro_crafting.tools.jsonpretty;
 import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.core.PrettyPrinter;
+import com.fasterxml.jackson.core.util.DefaultIndenter;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.parsetools.JsonEvent;
@@ -14,12 +17,18 @@ import java.io.IOException;
 public class JsonPrettyService {
     private static final JsonFactory factory = new JsonFactory();
 
+    private static final PrettyPrinter PRETTY_PRINTER;
+
+    static {
+        PRETTY_PRINTER = new DefaultPrettyPrinter().withObjectIndenter(new DefaultIndenter("  ", "\n"));
+    }
+
     public void handle(RoutingContext rc, Handler<Void> endHandler, String jsonPrefix) {
         HttpServerResponseOutputStream output = new HttpServerResponseOutputStream(rc.response());
         JsonGenerator generator;
         try {
             generator = factory.createGenerator(output, JsonEncoding.UTF8);
-            generator.useDefaultPrettyPrinter();
+            generator.setPrettyPrinter(PRETTY_PRINTER);
         } catch (IOException e) {
             rc.response().end("Invalid JSON, Reason: " + e.getMessage());
             return;
