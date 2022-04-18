@@ -5,12 +5,16 @@
     <parent>
         <groupId>com.pro-crafting</groupId>
         <artifactId>pc-parent</artifactId>
-        <version>10</version>
+        <version>11</version>
     </parent>
 
     <groupId>com.pro-crafting.tools</groupId>
     <artifactId>jsonpretty-web</artifactId>
     <version>1.1.2-SNAPSHOT</version>
+
+    <description>
+        JSON Pretty.
+    </description>
 
     <scm>
         <connection>scm:git:git@github.com:pro-crafting/jsonpretty.git</connection>
@@ -20,19 +24,8 @@
     </scm>
 
     <properties>
-        <!-- Settings -->
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- Port is set during execution of build-helper-maven-plugin:reserve-network-port goal -->
-        <sonar.organization>pro-crafting</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-
         <!-- Dependency Versions -->
         <version.quarkus>2.8.0.Final</version.quarkus>
-
-        <!-- Plugin Versions -->
-        <version.sonar-maven-plugin>3.4.1.1168</version.sonar-maven-plugin>
     </properties>
 
     <build>
