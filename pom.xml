@@ -10,7 +10,7 @@
 
     <groupId>com.pro-crafting.tools</groupId>
     <artifactId>jsonpretty-web</artifactId>
-    <version>1.1.2-SNAPSHOT</version>
+    <version>1.1.2</version>
 
     <description>
         JSON Pretty.
@@ -20,7 +20,7 @@
         <connection>scm:git:git@github.com:pro-crafting/jsonpretty.git</connection>
         <url>https://github.com/pro-crafting/jsonpretty</url>
         <developerConnection>scm:git:git@github.com:pro-crafting/jsonpretty.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>jsonpretty-web-1.1.2</tag>
     </scm>
 
     <properties>
