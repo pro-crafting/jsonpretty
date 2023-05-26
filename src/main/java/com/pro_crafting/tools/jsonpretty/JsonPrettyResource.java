@@ -3,8 +3,8 @@ package com.pro_crafting.tools.jsonpretty;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.ext.web.Router;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Observes;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
 
 @ApplicationScoped
 public class JsonPrettyResource {
