@@ -25,7 +25,7 @@
 
     <properties>
         <!-- Dependency Versions -->
-        <version.quarkus>3.12.2</version.quarkus>
+        <version.quarkus>3.13.1</version.quarkus>
     </properties>
 
     <build>
